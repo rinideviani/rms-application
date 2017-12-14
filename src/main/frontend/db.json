@@ -1,0 +1,186 @@
+{
+  "emp": [
+    {
+      "id": 1000,
+      "firstName": "Ray",
+      "lastName": "Bluth",
+      "gender": "M",
+      "dob": "1988-11-11",
+      "nationality": "India",
+      "maritalStatus": "Married",
+      "phone": "+621332321",
+      "subdivision": "CDC",
+      "status": "Full Time",
+      "suspendDate": "-",
+      "hiredDate": "2017-10-13",
+      "grade": "SE-AP",
+      "division": "SWD-Green",
+      "email": "mail@gee.com",
+      "avatar": "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",
+      "location": "Jakarta",
+      "gradeHistory": [
+        {
+          "no": "0",
+          "ds": "DS6",
+          "currentGrade": "SE-PG",
+          "startDate": "2015-1-23",
+          "endDate": "2016-9-23"
+        },
+        {
+          "no": "1",
+          "ds": "DS9",
+          "currentGrade": "SE-AP",
+          "startDate": "2016-9-23",
+          "endDate": "2017-9-23"
+        }
+      ],
+      "familyMember": [
+        {
+          "no": "0",
+          "name": "Marlie",
+          "gender": "F",
+          "dob": "1999-9-23",
+          "type": "Wife",
+          "isActive": false
+        },
+        {
+          "no": "1",
+          "name": "Kareema",
+          "gender": "F",
+          "dob": "1999-9-23",
+          "type": "Sister",
+          "isActive": true
+        }
+      ],
+      "workHistory": [
+        {
+          "no": "0",
+          "startDate": "1999-4-23",
+          "endDate": "2000-3-20",
+          "company": "MBV",
+          "jobName": ".Net Developer",
+          "jobDesc": [
+            {
+              "no": "0",
+              "jobDesc": "develop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "firstName": "Zake",
+      "lastName": "Weaver",
+      "gender": "M",
+      "dob": "1988-11-21",
+      "nationality": "India",
+      "maritalStatus": "Married",
+      "phone": "+6213378544",
+      "subdivision": "CDC",
+      "status": "Full Time",
+      "suspendDate": "2017-10-13",
+      "hiredDate": "2017-10-13",
+      "grade": "SE-PG",
+      "division": "SWD-Red",
+      "email": "mail@gee.com",
+      "avatar": "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",
+      "location": "Jakarta",
+      "gradeHistory": [
+        {
+          "no": "0",
+          "ds": "DS9",
+          "currentGrade": "SE-AP",
+          "startDate": "2015-1-23",
+          "endDate": "2016-9-23"
+        },
+        {
+          "no": "1",
+          "ds": "DS12",
+          "currentGrade": "SE-AN",
+          "startDate": "2016-9-23",
+          "endDate": "2017-9-23"
+        },
+        {
+          "no": "2",
+          "ds": "DS12",
+          "currentGrade": "SE-MJ",
+          "startDate": "2016-9-23",
+          "endDate": "2017-9-23"
+        }
+      ],
+      "familyMember": [
+        {
+          "no": "0",
+          "name": "Meilanie",
+          "gender": "F",
+          "dob": "1999-9-23",
+          "type": "Wife",
+          "isActive": true
+        }
+      ],
+      "workHistory": [
+        {
+          "no": "0",
+          "startDate": "1999-1-23",
+          "endDate": "2000-9-23",
+          "company": "PT. Wirecard",
+          "jobName": "Phyton Developer",
+          "jobDesc": [
+            {
+              "no": "0",
+              "jobDesc": "develop"
+            },
+            {
+              "no": "1",
+              "jobDesc": "deploy"
+            },
+            {
+              "no": "2",
+              "jobDesc": "debugging"
+            },
+            {
+              "no": "3",
+              "jobDesc": "UI/UX developer"
+            },
+            {
+              "no": "4",
+              "jobDesc": "Tecnical Lead"
+            },
+            {
+              "no": "5",
+              "jobDesc": "DBA"
+            }
+          ]
+        },
+        {
+          "no": "1",
+          "startDate": "2000-4-23",
+          "endDate": "2005-2-23",
+          "company": "Traveloka",
+          "jobName": "Swift Developer",
+          "jobDesc": [
+            {
+              "no": "0",
+              "jobDesc": "develop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "loading": false,
+      "finished": true,
+      "stepIndex": 3,
+      "firstName": "rini",
+      "lastName": "",
+      "gender": "",
+      "nationality": "",
+      "maritalStatus": "",
+      "phone": "",
+      "location": "",
+      "avatar": "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",
+      "id": 1001
+    }
+  ]
+}
