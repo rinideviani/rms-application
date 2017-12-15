@@ -51,11 +51,11 @@ class AddDataForm extends React.Component {
   };
 
  onChange = (e) => {
-        // Because we named the inputs to match their corresponding values in state, it's
-        // super easy to update the state
-        const state = this.state
-        state[e.target.name] = e.target.value;
-        this.setState(state);
+   // Because we named the inputs to match their corresponding values in state, it's
+   // super easy to update the state
+    const state = this.state
+    state[e.target.name] = e.target.value;
+    this.setState(state);
   }
 
 
@@ -202,6 +202,7 @@ class AddDataForm extends React.Component {
     if (finished) {
       return (
         <div style={contentStyle}>
+        
           <p>
             <a
               href="#"

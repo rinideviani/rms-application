@@ -26,11 +26,28 @@ export function createEmployee(data){
         headers: {
             'Content-Type': 'application/json' 
         },
-        body: JSON.stringify(data) 
-          
-        
+        body: JSON.stringify(data)  
     }).then(res => {
         return res;
     }).catch(err => err);
 
 }
+
+ 
+
+
+
+export function deleteEmployee(key){
+
+    const request = new Request('http://localhost:8000/employees/'+(key),
+    {
+      method: 'DELETE'
+    });
+
+    return fetch(request).then(response => {
+      return response.json();
+    }).catch(error => {
+      return error;
+    });
+  }
+ 

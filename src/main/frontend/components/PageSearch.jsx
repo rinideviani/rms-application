@@ -18,11 +18,14 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import AddDataForm from './AddDataForm'
 
+import { deleteEmployee } from '../actions/employeeActions';
+
 //icons
 import ActionOfflinePin from 'material-ui/svg-icons/action/offline-pin';
 import {orange500, blue500} from 'material-ui/styles/colors';
 import IconButton from 'material-ui/IconButton';
-import ContentSort from 'material-ui/svg-icons/content/sort';
+import ContentSort from 'material-ui/svg-icons/content/sort'; 
+import ActionDelete from 'material-ui/svg-icons/action/delete';  
 import ToggleRadioButtonChecked from 'material-ui/svg-icons/toggle/radio-button-checked'
 
 //lodash 
@@ -54,7 +57,8 @@ const styles = {
     fontSize:15,
     paddingLeft:'2px',
     paddingTop:'2px' ,
-    height:'30px',position:'relative',top:'5px' 
+    height:'30px',position:'relative',top:'5px' ,
+    width:220
   } ,
   inputStyle:{
     bottom:'9px',
@@ -71,6 +75,8 @@ const contentAddStyle = {
     position: 'fixed'
 };
 
+ 
+
   const rightIcons = (
     <div style={{width: '60px', height:'50px'}}> 
      <ToggleRadioButtonChecked  style={{size:'30px', height:'50px',width:'30px',color:'#7986CB' }}   />
@@ -85,7 +91,10 @@ export default class PageSearch extends Component{
 
     constructor(){
     super();
-    this.state={inputText: "", open: false }; 
+    this.state={inputText: "", 
+    addDialogOpen: false, 
+    deleteDialogOpen: false,
+    deleteButton: false }; 
     }    
 
      handleClick(keyData) {   
@@ -100,18 +109,29 @@ export default class PageSearch extends Component{
     } 
 
    sortAscending(empName) {  
+
      this.setState ( 
       {sorted:sortBy(empName, function(o) { return o.firstName; })}
       );  
     }
 
+ 
 
-  handleOpen = () => {
-    this.setState({open: true});
+
+  handleAddDialogOpen = () => {
+    this.setState({addDialogOpen: true});
   };
 
-  handleClose = () => {
-    this.setState({open: false});
+    handleDeleteDialogOpen = () => {
+    this.setState({deleteDialogOpen: true});
+  };
+
+  handleDeleteDialogClose = () => {
+    this.setState({deleteDialogOpen: false});
+  };
+
+  handleAddDialogClose = () => {
+    this.setState({addDialogOpen: false});
   };
   
     render(){   
@@ -130,38 +150,62 @@ export default class PageSearch extends Component{
             }); 
         }    
         
-        const actions = [
+        const addEmployeeDialogActions = [
             <FlatButton
               label="Cancel"
               primary={true}
-              onClick={this.handleClose}
+              onClick={this.handleAddDialogClose}
             />,
             <FlatButton
               label="Submit"
               primary={true}
               keyboardFocused={true}
-              onClick={this.handleClose}
+              onClick={this.handleAddDialogClose}
             /> 
           ];
+
+          const deleteEmployeeDialogActions = [
+              <FlatButton
+                label="Cancel"
+                primary={true}
+                onClick={this.handleDeleteDialogClose}
+              />,
+              <FlatButton
+                label="Delete"
+                primary={true}
+                onClick={(event) => {
+
+                event.preventDefault();
+                
+                console.log('id to delete',this.state.keyData);
+                deleteEmployee(parseInt(this.state.keyData));  
+                this.setState({deleteDialogOpen: false});
+                 }  
+                }
+
+              /> 
+            ];
+
    
     	   return( 
     				<div className="container"> 
-            <FloatingActionButton style={contentAddStyle} onClick={this.handleOpen}><ContentAdd />
+            <FloatingActionButton style={contentAddStyle} onClick={this.handleAddDialogOpen}><ContentAdd />
             </FloatingActionButton>
 
               <Dialog
                 title="Create"
-                actions={actions}
+                actions={addEmployeeDialogActions}
                 modal={false}
-                open={this.state.open}
+                open={this.state.addDialogOpen}
                 onRequestClose={this.handleClose}
                 autoScrollBodyContent={true}
               >   <AddDataForm/>  
                </Dialog>
 
 
-    				   <div style={{backgroundColor:'#7986CB' ,marginBottom:'9px',height:'46px' }}>
-    				    	 <TextField style={styles.textFieldStyle}
+    				   <div style={{backgroundColor:'#7986CB' ,marginBottom:'9px',height:'46px' }}> 
+
+                   <TextField style={styles.textFieldStyle}
                     id="text-field-search"
                     inputStyle={styles.inputStyle}
                     hintText='Search' 
@@ -170,14 +214,27 @@ export default class PageSearch extends Component{
                     underlineShow={false}
                     value={this.state.inputText}
                     onChange={e => this.setState({inputText: e.target.value})}
-                     />  
+                     />    
 
                     <IconButton 
-                      onClick={this.sortAscending.bind(this,this.props.items)}
-                    >
+                      onClick= {this.handleDeleteDialogOpen} >
+                      <ActionDelete color='white'/>  
+                    </IconButton>
+
+                     <Dialog
+                        actions={deleteEmployeeDialogActions}
+                        modal={false}
+                        open={this.state.deleteDialogOpen}
+                        onRequestClose={this.handleClose}
+                      >
+                        Delete Employee id # {this.state.keyData}   ?
+                      </Dialog>
+
+                    <IconButton 
+                      onClick={this.sortAscending.bind(this,this.props.items)} >
                       <ContentSort color='white'/> 
                     </IconButton>
- 
+                       
                 </div>  
                   { 
                      languages.map(function(emp,index){  

@@ -9,7 +9,7 @@ export default class EmployeeProfileContainer extends React.Component{
    
     if (!employeeById)
     {
-      return (<div>Please Select...</div>) 
+      return (<div></div>) 
     } 
      
       return (
