@@ -5,11 +5,15 @@ import {
   StepLabel 
 } from 'material-ui/Stepper';
 
+import MobileTearSheet from './MobileTearSheet';
+
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import TextField from 'material-ui/TextField'; 
 import Upload from 'material-ui-upload/Upload';
+import DatePicker from 'material-ui/DatePicker'; 
+import moment from 'moment'
 
 import { createEmployee } from '../actions/employeeActions';
  
@@ -28,6 +32,14 @@ const textStyle={
 width:'400px' 
 }
 
+const containerStyle={
+        width:'400px',
+        height:'550px',
+        margin : "10px",
+        borderBottom: 'none'
+        
+      }
+
 /**
  * A contrived example using a transition between steps
  */
@@ -41,12 +53,21 @@ class AddDataForm extends React.Component {
     firstName: '',
     lastName: '',
     gender: '',
+    dob:'',
     nationality: '',
     maritalStatus: '',
     phone: '' ,
+
+    subdivision:'',
+    status:'',
+    suspendDate:'',
+    hiredDate:'',
+    grade:'',
+    division:'',
+    email:'',
     location:'',
-    avatar:'',
-    dob:''
+    avatar:''
+   
 
   };
 
@@ -58,6 +79,18 @@ class AddDataForm extends React.Component {
     this.setState(state);
   }
 
+  onDobChange=(event, x) => {  
+    this.setState({dob: moment(x).format('YYYY-MM-DD')}) 
+     
+  }
+
+onHiredDateChange=(event, x) => {  
+    this.setState({hiredDate: moment(x).format('YYYY-MM-DD')}) 
+  }
+
+onSuspendDateChange=(event, x) => {  
+    this.setState({suspendDate: moment(x).format('YYYY-MM-DD')}) 
+  }
 
  onFileLoad = (e, file) => {
  console.log(e.target.result, file.name);
@@ -102,7 +135,7 @@ class AddDataForm extends React.Component {
       case 0:
         return (
            
-              <div style={mainBody}> 
+              <div style={mainBody}>  
                
                      <TextField 
                        name="firstName" 
@@ -130,14 +163,18 @@ class AddDataForm extends React.Component {
                       value={this.state.gender}
                        onChange={this.onChange}
                     /><br /> 
-                </div> 
-          
-        );
-      case 1:
-        return (
-        <div style={mainBody}> 
-               
-                     <TextField 
+
+                     
+             <DatePicker 
+                underlineStyle={textStyle}  
+                disabled={false}
+                floatingLabelText="Date of Birth" 
+                  
+                onChange={this.onDobChange}
+             /> <br />
+
+
+                      <TextField 
                        name="nationality" 
                        style={textStyle} 
                        disabled={false}
@@ -163,33 +200,107 @@ class AddDataForm extends React.Component {
                       value={this.state.phone}
                        onChange={this.onChange}
                     /><br /> 
-                </div> 
+
+                      <TextField 
+                      name="location" 
+                      style={textStyle} 
+                      disabled={false}
+                      floatingLabelText="Location"
+                      value={this.state.location}
+                      onChange={this.onChange}
+                      /><br />
+  
+
+              <TextField 
+                      name="subdivision" 
+                      style={textStyle} 
+                      disabled={false}
+                      floatingLabelText="Subdivision"
+                      value={this.state.subdivision}
+                      onChange={this.onChange}
+                      /><br />
+
+
+                <TextField 
+                      name="status" 
+                      style={textStyle} 
+                      disabled={false}
+                      floatingLabelText="Status"
+                      value={this.state.status}
+                      onChange={this.onChange}
+                      /><br />
+
+
+                
+
+
+             <DatePicker  
+                underlineStyle={textStyle}  
+                disabled={false}
+                floatingLabelText="Suspend Date"  
+                onChange={this.onSuspendDateChange}
+             /> <br />
+  
+
+             <DatePicker  
+                underlineStyle={textStyle}  
+                disabled={false}
+                floatingLabelText="Hired Date"  
+                onChange={this.onHiredDateChange}
+             /> <br />
+             
+              
+                <TextField 
+                      name="grade" 
+                      style={textStyle} 
+                      disabled={false}
+                      floatingLabelText="Grade"
+                      value={this.state.grade}
+                      onChange={this.onChange}
+                      /><br />
+ 
+              
+                <TextField 
+                      name="division" 
+                      style={textStyle} 
+                      disabled={false}
+                      floatingLabelText="Division"
+                      value={this.state.division}
+                      onChange={this.onChange}
+                      /><br />
+ 
+ 
+                <TextField 
+                      name="email" 
+                      style={textStyle} 
+                      disabled={false}
+                      floatingLabelText="Email"
+                      value={this.state.email}
+                      onChange={this.onChange}
+                      /><br />
+                
+
+                     <Upload 
+                     name="avatar" 
+                     label="Add" 
+                     onFileLoad={this.onFileLoad}
+                     value={this.state.avatar}
+                     />
+                    </div> 
+          
+        );
+      case 1:
+        return (
+          <div style={mainBody}>          
+          </div> 
            
         );
       case 2:
         return (
-           <div style={mainBody}> 
-               
-              <TextField 
-              name="location" 
-              style={textStyle} 
-              disabled={false}
-              floatingLabelText="Location"
-              value={this.state.location}
-              onChange={this.onChange}
-              /><br />
- 
-
-             <Upload 
-             name="avatar" 
-             label="Add" 
-             onFileLoad={this.onFileLoad}
-             value={this.state.avatar}
-             />
-
-                  
+          <div style={mainBody}> 
           </div> 
         );
+
       default:
         return 'Reset Data';
     }
@@ -206,7 +317,8 @@ class AddDataForm extends React.Component {
           <p>
             <a
               href="#"
-              onClick={(event) => {
+              onClick= 
+              {(event) => {
 
                 event.preventDefault();
                 

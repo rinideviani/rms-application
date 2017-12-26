@@ -18,8 +18,10 @@ import org.springframework.http.*;
 
 import com.employee.rms.business.domain.EmployeeProfile;
 import com.employee.rms.data.entity.Employee;
+import com.employee.rms.data.entity.GradeHistory;
 import com.employee.rms.data.repository.AddEmployeeRepository;
 import com.employee.rms.data.repository.EmployeeRepository;
+import com.employee.rms.data.repository.GradeHistoryRepository;
 
 
 @RestController
@@ -27,6 +29,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeRepository repository;
 	private AddEmployeeRepository addRepository;
+	private GradeHistoryRepository gradeHistoryRepository;
 	
 	@Autowired
     public EmployeeController(AddEmployeeRepository addRepository ) {
@@ -40,10 +43,11 @@ public class EmployeeController {
 	            Iterable<Employee> results = this.repository.findAll();
 	            results.forEach(emp-> {emps.add(emp);});
 	        }else{
-	        	Employee emp = this.repository.findById(id);
-	            if(null!=emp) {
-	                emps.add(emp);
-	            }
+			    Employee emp = this.repository.findById(id);
+			    
+			    if(null!=emp) {
+			    emps.add(emp);
+			    }
 	        }
 	        return emps;
 	    }

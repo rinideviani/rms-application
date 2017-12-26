@@ -185,7 +185,6 @@ export default class PageSearch extends Component{
 
               /> 
             ];
-
    
     	   return( 
     				<div className="container"> 

@@ -21,7 +21,7 @@ export function loadEmployees() {
 
 export function createEmployee(data){
 
-  return fetch('http://localhost:8000/employees', {
+  return fetch('http://localhost:8080/employees', {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json' 
@@ -39,7 +39,7 @@ export function createEmployee(data){
 
 export function deleteEmployee(key){
 
-    const request = new Request('http://localhost:8000/employees/'+(key),
+    const request = new Request('http://localhost:8080/employees/'+(key),
     {
       method: 'DELETE'
     });
