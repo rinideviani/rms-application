@@ -133,6 +133,8 @@ export default class PageSearch extends Component{
   handleAddDialogClose = () => {
     this.setState({addDialogOpen: false});
   };
+
+   
   
     render(){   
         let that=this; 
@@ -192,14 +194,15 @@ export default class PageSearch extends Component{
             </FloatingActionButton>
 
               <Dialog
-                title="Create"
-                actions={addEmployeeDialogActions}
-                modal={false}
-                open={this.state.addDialogOpen}
-                onRequestClose={this.handleClose}
-                autoScrollBodyContent={true}
-              >   <AddDataForm/>  
-               </Dialog>
+                  title="Create Employee"
+                  //actions={addEmployeeDialogActions}
+                  modal={false}
+                  open={this.state.addDialogOpen}
+                  onRequestClose={this.handleAddDialogClose}
+                  autoScrollBodyContent={true} 
+                >  
+               <AddDataForm/>  
+              </Dialog>
 
 
     				   <div style={{backgroundColor:'#7986CB' ,marginBottom:'9px',height:'46px' }}> 
