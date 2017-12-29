@@ -10,15 +10,67 @@ import DatePicker from 'material-ui/DatePicker';
 import Avatar from 'material-ui/Avatar';  
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
-import Dialog from 'material-ui/Dialog';
+import Dialog from 'material-ui/Dialog'; 
  
-  
+import { updateEmployee } from '../actions/employeeActions';
+import moment from 'moment';
 
 export default class EmployeeProfileDisplay extends React.Component{ 
  
+
+
+  state = { 
+    firstName:this.props.firstName,
+    lastName: this.props.lastName,
+    gender: this.props.gender,
+    dob:this.props.dob,
+    nationality: this.props.nationality,
+    maritalStatus: this.props.maritalStatus,
+    phone: this.props.phone ,
+
+    subdivision:this.props.subdivision,
+    status:this.props.status,
+    suspendDate:this.props.suspendDate,
+    hiredDate:this.props.hiredDate,
+    grade:this.props.grade,
+    division:this.props.division,
+    email:this.props.email,
+    avatar:this.props.avatar,
+
+    location:this.props.location,
+    id:this.props.id
+
+  };
+
+   onChange = (e) => {
+   // Because we named the inputs to match their corresponding values in state, it's
+   // super easy to update the state
+    const state = this.state
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+  }
+
+   onGenderFieldChange=(event, index, gender)=>{
+     this.setState({gender}); 
+  }
+
+  onDobChange=(event, x) => {  
+    this.setState({dob: moment(x).format('YYYY-MM-DD')})   
+  }
+
+  onHiredDateChange=(event, x) => {  
+    this.setState({hiredDate: moment(x).format('YYYY-MM-DD')}) 
+  }
+
+  onSuspendDateChange=(event, x) => {  
+    this.setState({suspendDate: moment(x).format('YYYY-MM-DD')}) 
+  }
+
+
   render(){   
-      const hiredDate = new Date(this.props.hiredDate); 
-      const dob = new Date(this.props.dob);   
+      const hiredDate = new Date(this.state.hiredDate); 
+      const dob = new Date(this.state.dob);  
+      const suspendDate=new Date(this.state.suspendDate) 
      /* let suspendDate; 
       if(!this.props.suspendDate){
         suspendDate= this.props.suspendDate
@@ -34,7 +86,7 @@ export default class EmployeeProfileDisplay extends React.Component{
 
       const containerStyle={
         width:'400px',
-        height:'550px',
+        height:'568px',
         margin : "10px",
         borderBottom: 'none'
         
@@ -49,16 +101,25 @@ export default class EmployeeProfileDisplay extends React.Component{
       };
 
        const rightButtons = (
-        <div> 
-          <RaisedButton label="CANCEL" secondary={true} style={raisedButtonStyle} />
-          <RaisedButton label="SAVE" secondary={true} style={raisedButtonStyle}  />  
-        </div>
-      );
+        <div>  
+          <RaisedButton label="SAVE" 
+             secondary={true} 
+             style={raisedButtonStyle} 
+              onClick= 
+              {(event) => {
 
-      const leftButtons=(
-      <div> 
-      </div>
-      );
+                event.preventDefault();
+                
+                console.log('value',this.state);
+                updateEmployee(this.state);  
+              }} 
+           />   
+        </div>
+       );
+
+  const leftButtons=(
+   <div></div>
+  );
 
  
      return( 
@@ -68,80 +129,107 @@ export default class EmployeeProfileDisplay extends React.Component{
            
               <MobileTearSheet style={containerStyle}  >
                <TextField 
+                 name="firstName"
                  style={textStyle} 
                  disabled={false}
                  floatingLabelText="First Name"
-                 defaultValue={this.props.firstName}
+                 value={this.state.firstName} 
+                 onChange={this.onChange}
                /><br />
 
                <TextField
+                name="lastName" 
                 style={textStyle} 
                 disabled={false}
                 floatingLabelText="Last Name"
-                defaultValue={this.props.lastName} 
+                value={this.state.lastName} 
+                onChange={this.onChange}
              /><br />
 
               <TextField
+                name="gender" 
                 style={textStyle} 
                 disabled={false}
                 floatingLabelText="Gender"
-                defaultValue={this.props.gender}
-             /><br />
+                value={this.state.gender} 
+               />
+             <br />
 
             <DatePicker  
                 underlineStyle={textStyle} 
                 disabled={false}
                 floatingLabelText="DOB" 
                 defaultDate={dob}
+                onChange={this.onDobChange}
             /> 
                
             <TextField
+                name="nationality" 
                 style={textStyle} 
                 disabled={false}
                 floatingLabelText="Nationality"
-                defaultValue={this.props.nationality}
+                value={this.state.nationality}
+                onChange={this.onChange}
             /><br /> 
 
             <TextField
+                name="maritalStatus" 
                 style={textStyle} 
                 disabled={false}
                 floatingLabelText="Marital Status"
-                defaultValue={this.props.maritalStatus}
+                value={this.state.maritalStatus}
+                onChange={this.onChange}
             /><br />
 
             <TextField
+                name="phone" 
                 style={textStyle} 
                 disabled={false}
                 floatingLabelText="Phone"
-                defaultValue={this.props.phone}
+                value={this.state.phone}
+                onChange={this.onChange}
             /><br />
+
+            <TextField 
+              name="location" 
+              style={textStyle} 
+              disabled={false}
+              floatingLabelText="Location"
+              value={this.state.location}
+              onChange={this.onChange}
+            /><br />
+  
                 
             </MobileTearSheet>
                 
             <div>  
              <MobileTearSheet style={containerStyle} >
 
-               <TextField
+               <TextField 
+                name="subdivision" 
                 style={textStyle} 
                 disabled={false}
                 floatingLabelText="Subdivision"
-                defaultValue={this.props.subdivision}
+                value={this.state.subdivision}
+                onChange={this.onChange}
              /><br />
 
              <TextField
+                name="status" 
                 style={textStyle} 
                 disabled={false}
                 floatingLabelText="Status"
-                defaultValue={this.props.status}
-              /><br />
-         
-           
-                <TextField
-                style={textStyle} 
+                value={this.state.status}
+                onChange={this.onChange}
+              /><br /> 
+
+              <DatePicker  
+                underlineStyle={textStyle}  
                 disabled={false}
-                floatingLabelText="Suspend Date"
-                defaultValue={this.props.suspendDate}
-              /><br />
+                floatingLabelText="Suspend Date" 
+                defaultDate={suspendDate} 
+                onChange={this.onSuspendDateChange} 
+              />  
              
 
              <DatePicker 
@@ -149,27 +237,36 @@ export default class EmployeeProfileDisplay extends React.Component{
                 disabled={false}
                 floatingLabelText="Hired Date" 
                 defaultDate={hiredDate}
-             /> 
+                onChange={this.onHiredDateChange}
+             />  
              
               <TextField
+                name="grade" 
                 style={textStyle} 
                 disabled={false}
                 floatingLabelText="Grade"
-                defaultValue={this.props.grade}
+                value={this.state.grade}
+                onChange={this.onChange} 
               /><br />
 
               <TextField
+                name="division" 
                 style={textStyle} 
                 disabled={false}
                 floatingLabelText="Division"
-                defaultValue={this.props.division}
+                value={this.state.division}
+                onChange={this.onChange}
+
               /><br />
 
               <TextField
+                name="email" 
                 style={textStyle} 
                 disabled={false}
                 floatingLabelText="Email"
-                defaultValue={this.props.email}
+                value={this.state.email}
+                onChange={this.onChange}
+
               /><br /> 
               
             </MobileTearSheet>
@@ -178,7 +275,7 @@ export default class EmployeeProfileDisplay extends React.Component{
           </div> 
                 <Avatar 
                 size={80}
-                src={'data:image/png;base64,' + this.props.avatar} />
+                src={'data:image/png;base64,' + this.state.avatar} />
                
        </div> 
 

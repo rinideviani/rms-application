@@ -10,9 +10,9 @@
  VALUES 
  
  (  'Jorge', 'Wills',
-    'M','1988-11-23','Australia','Married',
+    'Male','1988-11-23','Australia','Married',
 	'021 002285','CDC',
-	'Full Time','','2017-10-13',
+	'Full Time','2017-10-13','2017-10-13',
 	'SE-AP','SWD-Green',
 	'mail@gee.com','Jakarta' ,
      FILE_READ('D:/workspace/rms/src/images/128.JPG')
@@ -30,9 +30,9 @@
  VALUES 
  
  ( 'Cecill', 'Natalie',
-    'F','1988-06-30','Japan','Married',
+    'Female','1988-06-30','Japan','Married',
 	'021 346346','CDC',
-	'Full Time','-','2017-10-13',
+	'Full Time','2017-10-13','2017-10-13',
 	'SE-PG','SWD-Green',
 	'mail@gee.com','Bali',
 	 FILE_READ('D:/workspace/rms/src/images/2.JPG')

@@ -30,7 +30,9 @@ export default class EmployeeProfileContainer extends React.Component{
           grade={employeeById.grade}
           division={employeeById.division}
           email={employeeById.email}
-          avatar={employeeById.avatar}> 
+          avatar={employeeById.avatar}
+          location={employeeById.location}
+          > 
         </EmployeeProfileDisplay> 
       ) 
   }

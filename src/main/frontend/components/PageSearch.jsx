@@ -134,7 +134,7 @@ export default class PageSearch extends Component{
     this.setState({addDialogOpen: false});
   };
 
-   
+
   
     render(){   
         let that=this; 

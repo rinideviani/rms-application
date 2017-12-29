@@ -32,10 +32,7 @@ export function createEmployee(data){
     }).catch(err => err);
 
 }
-
  
-
-
 
 export function deleteEmployee(key){
 
@@ -50,4 +47,20 @@ export function deleteEmployee(key){
       return error;
     });
   }
+
+
+export function updateEmployee(data){
+
+  return fetch('http://localhost:8080/employees', {
+        method: 'PUT', 
+        headers: {
+            'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify(data)  
+    }).then(res => {
+        return res;
+    }).catch(err => err);
+
+}
+ 
  

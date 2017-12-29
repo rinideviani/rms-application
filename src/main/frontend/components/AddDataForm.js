@@ -102,11 +102,11 @@ class AddDataForm extends React.Component {
     this.setState({dob: moment(x).format('YYYY-MM-DD')})   
   }
 
-onHiredDateChange=(event, x) => {  
+  onHiredDateChange=(event, x) => {  
     this.setState({hiredDate: moment(x).format('YYYY-MM-DD')}) 
   }
 
-onSuspendDateChange=(event, x) => {  
+  onSuspendDateChange=(event, x) => {  
     this.setState({suspendDate: moment(x).format('YYYY-MM-DD')}) 
   }
 
@@ -188,7 +188,7 @@ resetValue= () => {
                        disabled={false}
                        floatingLabelText="First Name"
                        value={this.state.firstName}
-                        onChange={this.onChange}
+                       onChange={this.onChange}
                      /><br />
 
                      <TextField
@@ -332,9 +332,7 @@ resetValue= () => {
                      value={this.state.avatar}
                      buttonControl={IconButton}
                      />
- 
-                    
-
+  
                 </div> 
           
         );
