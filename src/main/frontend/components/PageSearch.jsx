@@ -29,7 +29,8 @@ import ActionDelete from 'material-ui/svg-icons/action/delete';
 import ToggleRadioButtonChecked from 'material-ui/svg-icons/toggle/radio-button-checked'
 
 //lodash 
-import sortBy from 'lodash/sortBy' 
+import sortBy from 'lodash/sortBy' ;
+import Badge from 'material-ui/Badge';
 
 
 const jumbotronStyle = {
@@ -58,7 +59,7 @@ const styles = {
     paddingLeft:'2px',
     paddingTop:'2px' ,
     height:'30px',position:'relative',top:'5px' ,
-    width:220
+    width:190
   } ,
   inputStyle:{
     bottom:'9px',
@@ -109,14 +110,10 @@ export default class PageSearch extends Component{
     } 
 
    sortAscending(empName) {  
-
      this.setState ( 
       {sorted:sortBy(empName, function(o) { return o.firstName; })}
       );  
     }
-
- 
-
 
   handleAddDialogOpen = () => {
     this.setState({addDialogOpen: true});
@@ -133,8 +130,7 @@ export default class PageSearch extends Component{
   handleAddDialogClose = () => {
     this.setState({addDialogOpen: false});
   };
-
-
+ 
   
     render(){   
         let that=this; 
@@ -236,6 +232,13 @@ export default class PageSearch extends Component{
                       onClick={this.sortAscending.bind(this,this.props.items)} >
                       <ContentSort color='white'/> 
                     </IconButton>
+
+                    <Badge
+                        badgeContent={this.props.items.length}
+                        secondary={true}
+                        badgeStyle={{top: 12, right: 12}}
+                      >
+                    </Badge>
                        
                 </div>  
                   { 

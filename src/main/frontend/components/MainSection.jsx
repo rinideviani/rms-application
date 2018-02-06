@@ -14,7 +14,7 @@ export default class MainSection extends React.Component{
    
     return(
        <div id="mainSection" >  
-          <MobileTearSheet  height={740} style={{border: '2px solid #d9d9d9', borderBottom: 'none', width:'500px'}} >
+          <MobileTearSheet  height={748} style={{border: '2px solid #d9d9d9', borderBottom: 'none', width:'500px'}} >
             <PageSearch items={this.props.items} callBackFromSearchPage={this.mainSectionCallBack} />
           </MobileTearSheet>  
  

@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id; 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -74,28 +76,12 @@ public class Employee implements Serializable {
 	
 	@Column(name="AVATAR")
 	private byte[] avatar; 
-	
-	
- /*
-	@JsonIgnore
-	@OneToMany(targetEntity = GradeHistory.class,
-			mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER ) 
-	private List<GradeHistory>  gradeHistory;
-	public List<GradeHistory> getGradeHistory() {
-			return gradeHistory;
-		} 
-		public void setGradeHistory(List<GradeHistory> gradeHistory) {
-			this.gradeHistory = gradeHistory;
-		}*/
 	 
- 
-	
 
-	
 	public byte[] getAvatar() {
 		return avatar;
 	}
- 
+  
 
 	public void setAvatar(byte[] avatar) {
 		this.avatar = avatar;
@@ -230,5 +216,18 @@ public class Employee implements Serializable {
 	}
  
 
+	
+	 @ManyToOne 
+	 private GradeHistory gradeHistory;
+	
+
+	public GradeHistory getGradeHistory() {
+		return gradeHistory;
+	}
+
+
+	public void setGradeHistory(GradeHistory gradeHistory) {
+		this.gradeHistory = gradeHistory;
+	} 
 
 }

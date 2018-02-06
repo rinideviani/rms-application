@@ -11,9 +11,12 @@ import Avatar from 'material-ui/Avatar';
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog'; 
+
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem'; 
  
 import { updateEmployee } from '../actions/employeeActions';
-import moment from 'moment';
+import moment from 'moment'; 
 
 export default class EmployeeProfileDisplay extends React.Component{ 
  
@@ -86,7 +89,7 @@ export default class EmployeeProfileDisplay extends React.Component{
 
       const containerStyle={
         width:'400px',
-        height:'568px',
+        height:'580px',
         margin : "10px",
         borderBottom: 'none'
         
@@ -145,15 +148,20 @@ export default class EmployeeProfileDisplay extends React.Component{
                 value={this.state.lastName} 
                 onChange={this.onChange}
              /><br />
+ 
+                <SelectField
+                      name="gender" 
+                      style={textStyle} 
+                      disabled={false}
+                      floatingLabelText="Gender"
+                      value={this.state.gender}
+                      onChange={this.onGenderFieldChange} 
+                       > 
+                    <MenuItem value={'Female'} primaryText="Female" />
+                    <MenuItem value={'Male'} primaryText="Male" />
 
-              <TextField
-                name="gender" 
-                style={textStyle} 
-                disabled={false}
-                floatingLabelText="Gender"
-                value={this.state.gender} 
-               />
-             <br />
+                    </SelectField><br /> 
+
 
             <DatePicker  
                 underlineStyle={textStyle} 
@@ -275,7 +283,8 @@ export default class EmployeeProfileDisplay extends React.Component{
           </div> 
                 <Avatar 
                 size={80}
-                src={'data:image/png;base64,' + this.state.avatar} />
+                src={'data:image/png;base64,' + this.state.avatar} 
+                 />
                
        </div> 
 
